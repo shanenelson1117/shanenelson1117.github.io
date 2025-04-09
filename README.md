@@ -1,4 +1,5 @@
 # Shane Nelson 
+![This is me](shanenelson1117.github.io/EU2A0146.jpeg)
 ## About Me
 Hello, I am Shane. This is a markdown document for ENGL 396. In my free time I enjoy cooking, watching Brooklyn Nine Nine, and playing hockey.
 
