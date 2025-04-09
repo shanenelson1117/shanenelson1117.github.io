@@ -13,7 +13,7 @@ I am a senior at the University of Washington majoring in **Computer Science and
 
 ## Programming Experience
 
-I have been programming for a couple years. I am proficient in <em>Python, Java, SystemVerilog, and others</em>. Here is a link to my most recent project: [CSE 469 register file](https://github.com/shanenelson1117/469lab1)
+I have been programming for a couple years. I am proficient in <em>Python, Java, SystemVerilog, C, and others</em>. Here is a link to my most recent project: [CSE 469 register file](https://github.com/shanenelson1117/469lab1)
 
 ## Random Table 
 | Thing 1 | Thing 2 | Thing 3 |
