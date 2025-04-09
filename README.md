@@ -1,7 +1,11 @@
 # Shane Nelson 
 ![This is me](EU2A0146.jpeg)
 ## About Me
-Hello, I am Shane. This is a markdown document for ENGL 396. In my free time I enjoy cooking, watching Brooklyn Nine Nine, and playing hockey.
+Hello, I am Shane. This is a markdown document for ENGL 396. In my free time I love to:
+1. learn new things
+2. play hockey
+3. watch Brooklyn Nine Nine
+4. cook
 
 ## Academics
 
