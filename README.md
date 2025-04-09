@@ -8,4 +8,4 @@ I am a senior at the University of Washington majoring in **Computer Science and
 
 ## Programming Experience
 
-I have been programming for a couple years. I am proficient in Python, Java, SystemVerilog, and others.
+I have been programming for a couple years. I am proficient in <em>Python, Java, SystemVerilog, and others<em>.
