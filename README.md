@@ -4,7 +4,7 @@ Hello, I am Shane. This is a markdown document for ENGL 396. In my free time I e
 
 ## Academics
 
-I am a senior at the University of Washington majoring in Computer Science and Political Science.
+I am a senior at the University of Washington majoring in **Computer Science and Political Science**.
 
 ## Programming Experience
 
