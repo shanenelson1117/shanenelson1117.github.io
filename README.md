@@ -18,6 +18,6 @@ I have been programming for a couple years. I am proficient in <em>Python, Java,
 ## Random Table 
 | Thing 1 | Thing 2 | Thing 3 |
 |----------|----------|----------|
-| $A+B$ | Hello  | 0xFF |
-| $\pi$  | 49  | Hello again  |
+| A+B | Hello | 0xFF |
+| pi  | 49  | Hello again  |
 
