@@ -50,7 +50,6 @@
             height: 180px;
             object-fit: cover;
             border-radius: 4px;
-            filter: grayscale(20%);
             display: block;
         }
 
@@ -349,7 +348,7 @@
         <div class="project">
             <div class="project-header">
                 <span class="project-title">Operating System on ARMv8 (i.MX 8X)</span>
-                <span class="project-tag">C / ARM Assembly</span>
+                <span class="project-tag wip">in progress</span>
             </div>
             <div class="project-stack">Barrelfish Multikernel · NXP i.MX 8X · Real Hardware</div>
             <p>
@@ -363,8 +362,24 @@
 
         <div class="project">
             <div class="project-header">
+                <span class="project-title">M:N User-Level Thread Library</span>
+                <span class="project-tag wip">in progress</span>
+            </div>
+            <div class="project-stack">C · x86-64 Assembly · Work Stealing · Preemption</div>
+            <p>
+                A user-level M:N threading library written in C. Implements green threads with
+                work-stealing scheduling across multiple kernel threads using Chase-Lev deques,
+                signal-based preemption via SIGPROF, and synchronization primitives built on
+                futexes. Green thread stacks are allocated via mmap with PROT_NONE guard pages
+                for overflow detection. Context switching is implemented in x86-64 assembly
+                saving and restoring callee-saved registers per the SysV ABI.
+            </p>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
                 <span class="project-title">Distributed Key-Value Store</span>
-                <span class="project-tag">Distributed Systems</span>
+                <span class="project-tag wip">in progress</span>
             </div>
             <div class="project-stack">Consensus · Fault Tolerance · Replication</div>
             <p>
@@ -383,25 +398,9 @@
             <div class="project-stack">Lexing · Parsing · Semantic Analysis · Code Generation</div>
             <p>
                 A compiler for a subset of Java covering the full translation pipeline from source
-                to machine code. Implements a hand-written lexer and parser, type-checking and
+                to machine code. Implements a scanner and parser, type-checking and
                 semantic analysis passes, and a code generator targeting a register-based
                 intermediate representation.
-            </p>
-        </div>
-
-        <div class="project">
-            <div class="project-header">
-                <span class="project-title">M:N User-Level Thread Library</span>
-                <span class="project-tag wip">in progress</span>
-            </div>
-            <div class="project-stack">C · x86-64 Assembly · Work Stealing · Preemption</div>
-            <p>
-                A user-level M:N threading library written in C. Implements green threads with
-                work-stealing scheduling across multiple kernel threads using Chase-Lev deques,
-                signal-based preemption via SIGPROF, and synchronization primitives built on
-                futexes. Green thread stacks are allocated via mmap with PROT_NONE guard pages
-                for overflow detection. Context switching is implemented in x86-64 assembly
-                saving and restoring callee-saved registers per the SysV ABI.
             </p>
         </div>
     </section>
