@@ -1,56 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shane Nelson</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shane Nelson</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+        :root {
+            --bg:       #0f0f0f;
+            --surface:  #161616;
+            --border:   #2a2a2a;
+            --text:     #e8e8e8;
+            --muted:    #888;
+            --accent:   #4af;
+            --mono:     'IBM Plex Mono', monospace;
+            --sans:     'IBM Plex Sans', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 32px 120px;
+        }
+
+        /* ── Hero ─────────────────────────────────── */
+        .hero {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 48px;
+            align-items: start;
+            padding-bottom: 56px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 56px;
+        }
+
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: grayscale(20%);
+            display: block;
+        }
+
+        /* placeholder if image is missing */
+        .hero-image-placeholder {
+            width: 180px;
+            height: 180px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 11px;
+        }
+
+        .hero-text h1 {
+            font-family: var(--mono);
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .hero-text .tagline {
+            font-size: 13px;
+            color: var(--muted);
+            font-family: var(--mono);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 14px;
+            line-height: 1.75;
+            color: #bbb;
+            margin-bottom: 10px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-links a {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            padding: 4px 12px;
+            border-radius: 2px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .hero-links a:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* ── Sections ────────────────────────────── */
+        section {
+            margin-bottom: 52px;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 24px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── Projects ────────────────────────────── */
+        .project {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project:last-child { border-bottom: none; }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-title {
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .project-tag {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        .project-tag.wip {
+            color: #f90;
+            border-color: #f90;
+        }
+
+        .project-stack {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            font-size: 13.5px;
+            color: #aaa;
+            line-height: 1.75;
+        }
+
+        .project a {
+            color: var(--accent);
+            text-decoration: none;
+            font-family: var(--mono);
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .project a:hover { text-decoration: underline; }
+
+        /* ── Skills grid ─────────────────────────── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 4px 24px;
+        }
+
+        .skill-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-value {
+            font-size: 13px;
+            color: #bbb;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── Reading list ────────────────────────── */
+        .reading-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .reading-list li {
+            font-size: 13.5px;
+            color: #aaa;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .reading-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-family: var(--mono);
+        }
+
+        .reading-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .reading-list a:hover { text-decoration: underline; }
+
+        /* ── Coursework ──────────────────────────── */
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .course-tag {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+
+        /* ── Footer ──────────────────────────────── */
+        footer {
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* ── Responsive ──────────────────────────── */
+        @media (max-width: 600px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .hero-image,
+            .hero-image-placeholder {
+                width: 120px;
+                height: 120px;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .skill-label {
+                border-bottom: none;
+                padding-bottom: 0;
+                color: var(--text);
+                font-size: 11px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Shane Nelson</h1>
-  <img src="EU2A0146.jpeg" alt="This is me" width="200" />
+    <!-- ── Hero ──────────────────────────────────── -->
+    <div class="hero">
+        <img src="EU2A0146.jpeg" alt="Shane Nelson" class="hero-image"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="hero-image-placeholder" style="display:none;">photo</div>
 
+        <div class="hero-text">
+            <h1>Shane Nelson</h1>
+            <div class="tagline">University of Washington · CS &amp; Political Science · Senior</div>
 
-  <h2>About Me</h2>
-  <p>Hello, I am Shane. This is a markdown document for ENGL 396. In my free time I love to:</p>
-  <ol>
-    <li>learn new things</li>
-    <li>play hockey</li>
-    <li>watch Brooklyn Nine Nine</li>
-    <li>cook</li>
-  </ol>
+            <p>
+                I work on systems problems at every level of the stack — hardware pipelines,
+                operating systems, compilers, and user-space runtimes. I am most interested
+                in the layer beneath the abstraction: understanding what the machine is
+                actually doing and building things that require that understanding.
+            </p>
+            <p>
+                Outside of computing I play hockey, cook, and watch too much Brooklyn Nine-Nine.
+            </p>
 
-  <h2>Academics</h2>
-  <p>
-    I am a senior at the University of Washington majoring in 
-    <strong>Computer Science and Political Science</strong>.
-  </p>
+            <div class="hero-links">
+                <a href="https://github.com/shanenelson1117">GitHub</a>
+                <a href="mailto:shanenelson1117@gmail.com">Email</a>
+            </div>
+        </div>
+    </div>
 
-  <h2>Programming Experience</h2>
-  <p>
-    I have been programming for a couple years. I am proficient in 
-    <em>Python, Java, SystemVerilog, C, and others</em>. 
-    Here is a link to my most recent project: 
-    <a href="https://github.com/shanenelson1117/469lab1">CSE 469 register file</a>
-  </p>
+    <!-- ── Projects ──────────────────────────────── -->
+    <section>
+        <div class="section-label">Projects</div>
 
-  <h2>Random Table</h2>
-  <table border="1">
-    <tr>
-      <th>Thing 1</th>
-      <th>Thing 2</th>
-      <th>Thing 3</th>
-    </tr>
-    <tr>
-      <td>A+B</td>
-      <td>Hello</td>
-      <td>0xFF</td>
-    </tr>
-    <tr>
-      <td>pi</td>
-      <td>49</td>
-      <td>Hello again</td>
-    </tr>
-  </table>
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">Out-of-Order RISC-V CPU</span>
+                <span class="project-tag">SystemVerilog</span>
+            </div>
+            <div class="project-stack">Tomasulo · ROB · Branch Prediction · CSR / Privilege</div>
+            <p>
+                A cycle-accurate out-of-order superscalar RISC-V processor. Implements Tomasulo's
+                algorithm with a reorder buffer, reservation stations, a load-store queue, a JALR queue,
+                and a complete fetch pipeline with a global history shift register, branch prediction
+                buffer, and return address stack. Handles the full trap and privilege model including
+                exceptions, interrupts, ecall, and mret. Currently being translated to a software
+                simulator in Rust with an integrated instruction set simulator for differential testing.
+            </p>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">Operating System on ARMv8 (i.MX 8X)</span>
+                <span class="project-tag">C / ARM Assembly</span>
+            </div>
+            <div class="project-stack">Barrelfish Multikernel · NXP i.MX 8X · Real Hardware</div>
+            <p>
+                A fairly complete operating system for NXP's ARMv8-based i.MX 8X hardware built over
+                the course of a semester. Based on the Barrelfish multikernel originally developed at
+                ETH Zurich in collaboration with Microsoft Research. Covers process management,
+                virtual memory, inter-process communication, capability-based security, and device
+                drivers running on real silicon rather than a simulator.
+            </p>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">Distributed Key-Value Store</span>
+                <span class="project-tag">Distributed Systems</span>
+            </div>
+            <div class="project-stack">Consensus · Fault Tolerance · Replication</div>
+            <p>
+                A distributed key-value store implementing consensus and fault tolerance across
+                multiple nodes. Covers the core tradeoffs in distributed systems design —
+                consistency, availability, and partition tolerance — and the practical engineering
+                of making replication work correctly under failure.
+            </p>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">Java Subset Compiler</span>
+                <span class="project-tag">Compilers</span>
+            </div>
+            <div class="project-stack">Lexing · Parsing · Semantic Analysis · Code Generation</div>
+            <p>
+                A compiler for a subset of Java covering the full translation pipeline from source
+                to machine code. Implements a hand-written lexer and parser, type-checking and
+                semantic analysis passes, and a code generator targeting a register-based
+                intermediate representation.
+            </p>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">M:N User-Level Thread Library</span>
+                <span class="project-tag wip">in progress</span>
+            </div>
+            <div class="project-stack">C · x86-64 Assembly · Work Stealing · Preemption</div>
+            <p>
+                A user-level M:N threading library written in C. Implements green threads with
+                work-stealing scheduling across multiple kernel threads using Chase-Lev deques,
+                signal-based preemption via SIGPROF, and synchronization primitives built on
+                futexes. Green thread stacks are allocated via mmap with PROT_NONE guard pages
+                for overflow detection. Context switching is implemented in x86-64 assembly
+                saving and restoring callee-saved registers per the SysV ABI.
+            </p>
+        </div>
+    </section>
+
+    <!-- ── Skills ────────────────────────────────── -->
+    <section>
+        <div class="section-label">Skills</div>
+        <div class="skills-grid">
+            <span class="skill-label">Languages</span>
+            <span class="skill-value">C, C++, Rust, SystemVerilog, Python, Java, x86-64 / ARM Assembly</span>
+            <span class="skill-label">Systems</span>
+            <span class="skill-value">Operating systems, computer architecture, concurrent programming, compilers, hardware design</span>
+            <span class="skill-label">Tools</span>
+            <span class="skill-value">GDB, QEMU, Valgrind, perf, Git, Make, Vivado</span>
+        </div>
+    </section>
+
+    <!-- ── Coursework ─────────────────────────────── -->
+    <section>
+        <div class="section-label">Coursework</div>
+        <div class="course-list">
+            <span class="course-tag">Computer Architecture</span>
+            <span class="course-tag">Operating Systems</span>
+            <span class="course-tag">Distributed Systems</span>
+            <span class="course-tag">Compilers</span>
+            <span class="course-tag">Hardware / Software Interface</span>
+            <span class="course-tag">Concurrent Programming</span>
+            <span class="course-tag">Discrete Structures, Linear Alegebra, and Probabilty </span>
+            <span class="course-tag">A whole host of Political Science classes, mainly focusing on American political development</span>
+        </div>
+    </section>
+
+    <!-- ── Reading ────────────────────────────────── -->
+    <section>
+        <div class="section-label">Reading</div>
+        <ul class="reading-list">
+            <li><a href="https://lwn.net">LWN.net</a> — Linux kernel development, weekly</li>
+            <li><a href="https://github.com/shanenelson1117/ReadingLists/blob/main/interview_prep_roadmap.pdf"> Systems interview prep reading list</a> — systems performance and tracing</li>
+            <li><a href="https://mirrors.edge.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html">Is Parallel Programming Hard</a> — Paul McKenney</li>
+            <li><a href="https://sosp.org">SOSP</a> / <a href="https://www.usenix.org/conferences/byname/179">OSDI</a> proceedings</li>
+            <li><a href="https://github.com/shanenelson1117/ReadingLists/blob/main/user_threads_resources.pdf">Userspace threading reading list</a> </li>
+        </ul>
+    </section>
+
+    <footer>
+        Shane Nelson · University of Washington · Seattle WA
+    </footer>
 
 </body>
 </html>
