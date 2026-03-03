@@ -342,8 +342,7 @@
                 algorithm with a reorder buffer, reservation stations, a load-store queue, a JALR queue,
                 and a complete fetch pipeline with a global history shift register, branch prediction
                 buffer, and return address stack. Handles the full trap and privilege model including
-                exceptions, interrupts, ecall, and mret. Currently being translated to a software
-                simulator in Rust with an integrated instruction set simulator for differential testing.
+                exceptions, ecall, and mret. Verified by diff testing vs. Spike.
             </p>
         </div>
 
@@ -438,6 +437,7 @@
     <!-- ── Reading ────────────────────────────────── -->
     <section>
         <div class="section-label">Reading</div>
+        <p> Things I find worth reading:</p>
         <ul class="reading-list">
             <li><a href="https://lwn.net">LWN.net</a> — Linux kernel development, weekly</li>
             <li><a href="https://github.com/shanenelson1117/ReadingLists/blob/main/interview_prep_roadmap.pdf"> Systems interview prep reading list</a> — systems performance and tracing</li>
